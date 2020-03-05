@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppObserverExercise.cs" />
+    <Compile Include="IDisplay.cs" />
     <Compile Include="Portfolio_display.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="Portfolio_observer.cs" />

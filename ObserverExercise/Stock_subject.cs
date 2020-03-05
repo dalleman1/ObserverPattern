@@ -10,21 +10,16 @@ namespace ObserverExercise
     {
         protected List<IObserver> observers = new List<IObserver>();
         
-        void Attach(IObserver obs)
+        public void Attach(IObserver obs)
         {
             observers.Add(obs);
         }
 
-        void Dettach(IObserver obs)
+        public void Dettach(IObserver obs)
         {
-            int i = observers.indexOf(obs);
-            if (i >= 0)
-            {
-                observers.remove(i);
-            }
+            observers.Remove(obs);
         }
 
-        public abstract void Notify()
-        {   }
+        public abstract void Notify();
     }
 }

@@ -8,27 +8,70 @@ namespace ObserverExercise
 {
     public class Portfolio_observer : IObserver
     {
-        List<Stock> e = new List<Stock>();
-        struct Stock
+        public int TotalValue;
+        public Portfolio_display _display = new Portfolio_display();
+
+        public List<Stock> stockList = new List<Stock>();
+        public class Stock
         {
             public string Stockname { get; set; }
 
             public int AmountofStocks { get; set; }
 
             public int Value { get; set; }
+
+            public Stock(string _Stockname, int _AmountofStocks, int _Value)
+            {
+                Stockname = _Stockname;
+                AmountofStocks = _AmountofStocks;
+                Value = _Value;
+            }
         };
+
+
 
         public void Update(Stock s)
         {
-            Stock _Stock = new Stock();
+            int tempTotal = 0;
 
-            for (int i = 0; i < e.Count; i++)
+            if (stockList.Count <= 0)
             {
-                if (_Stock.Stockname == s.Stockname)
-                {
-                    _Stock.Value = s.Value;
-                }
+                stockList.Add(s);
+                TotalValue = s.Value;
+                _display.Display(stockList, TotalValue);
+
             }
+            else
+            {
+                if (stockList.Any( item => item.Stockname == s.Stockname))
+                {
+                    foreach (var obj in stockList.ToList())
+                    {
+                        if (obj.Stockname == s.Stockname)
+                        {
+                            obj.Value = s.Value;
+                            obj.AmountofStocks = s.AmountofStocks;
+                        }
+
+                    }
+                } else
+                {
+                    stockList.Add(s);
+                }
+
+
+                foreach(var obj in stockList.ToList())
+                {
+
+                    tempTotal += obj.Value;
+                }
+
+
+                TotalValue = tempTotal;
+                _display.Display(stockList, TotalValue);
+            }
+            
+            
         }
     }
 }

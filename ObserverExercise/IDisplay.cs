@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ObserverExercise
 {
-    public interface IObserver
+    public interface IDisplay
     {
-        void Update(Portfolio_observer.Stock stock);
+        void Display(List<Portfolio_observer.Stock> stocks, int _totalValue);
     }
 }
