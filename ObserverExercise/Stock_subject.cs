@@ -8,7 +8,7 @@ namespace ObserverExercise
 {
     public abstract class Stock_subject
     {
-        List<IObserver> observers = new List<IObserver>();
+        protected List<IObserver> observers = new List<IObserver>();
         
         void Attach(IObserver obs)
         {
@@ -17,15 +17,14 @@ namespace ObserverExercise
 
         void Dettach(IObserver obs)
         {
-            observers.Remove(obs);
-        }
-
-        void Notify()
-        {
-            foreach (var obs in observers)
+            int i = observers.indexOf(obs);
+            if (i >= 0)
             {
-                obs.update(Random data);
+                observers.remove(i);
             }
         }
+
+        public abstract void Notify()
+        {   }
     }
 }

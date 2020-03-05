@@ -16,8 +16,6 @@ namespace ObserverExercise
             public int AmountofStocks { get; set; }
 
             public int Value { get; set; }
-
-            public int TotalValue { get { return TotalValue; } set { TotalValue = Value * AmountofStocks; } }
         };
 
         public void Update(Stock s)

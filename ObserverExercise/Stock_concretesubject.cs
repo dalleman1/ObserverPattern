@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace ObserverExercise
 {
-    class Stock_concretesubject
+    public class Stock_concretesubject : Stock_subject
     {
+        public void Notify()
+        {
+            foreach (var stock in base.observers)
+            {
+                stock temp = new stock { Stockname };
+                stock.Update()
+            }
+        }
+
     }
 }
